@@ -1,0 +1,61 @@
+** Тестовое задание:
+
+Необходимо написать одностраничное Web-приложение, интерфейс которого содержит:
+
+1) Таблицу, отображающую информацию о времени создания и удаления виртуальных серверов (Столбцы: VirtualServerId, CreateDateTime, RemoveDateTime, SelectedForRemove);
+2) Кнопку добавления нового виртуального сервера (Add);
+3) Кнопку удаления виртуальных серверов помеченых SelectedForRemove (Remove);
+4) Поле, в котором выводится суммарное время, в течении которого в таблице присутсвовал хотябы один неудаленный сервер (TotalUsageTime);
+5) Поле, в котором выводится текущее время (CurrentDateTime).
+
+
+Вы можете использовать удобные для Вас языки и библиотеки (C# приветствуется). Данные о времени создания и удаления должны храниться в базе данных (MS SQL приветствуется).
+
+
+
+** Пример:
+
+CurrentDateTime:       2019-01-21 16:40:00
+TotalUsageTime:        04:40:00
+
+VirtualServerId       CreateDateTime       RemoveDateTime   SelectedForRemove
+              1  2019-01-21 12:00:00  
+              2  2019-01-21 12:40:00
+
+
+
+
+*** После пометки как SelectedForRemove:
+
+CurrentDateTime:       2019-01-21 16:40:30
+TotalUsageTime:        04:40:30
+
+VirtualServerId       CreateDateTime       RemoveDateTime   SelectedForRemove
+              1  2019-01-21 12:00:00                                +
+              2  2019-01-21 12:40:00                                +
+
+
+
+
+*** Спустя три минуты после нажатия на кнопку Remove:
+
+CurrentDateTime:       2019-01-21 16:43:35
+TotalUsageTime:        04:40:35
+
+VirtualServerId       CreateDateTime       RemoveDateTime   SelectedForRemove
+              1  2019-01-21 12:00:00  2019-01-21 16:40:35
+              2  2019-01-21 12:40:00  2019-01-21 16:40:35
+
+
+
+
+*** Спустя пять минут после добавления нового сервера:
+
+CurrentDateTime:       2019-01-21 16:51:00
+TotalUsageTime:        04:45:35
+
+VirtualServerId       CreateDateTime       RemoveDateTime   SelectedForRemove
+              1  2019-01-21 12:00:00  2019-01-21 16:40:35
+              2  2019-01-21 12:40:00  2019-01-21 16:40:35
+              3  2019-01-21 16:46:00
+
